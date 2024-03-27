@@ -26,6 +26,98 @@ class TestGrafo(unittest.TestCase):
         self.g_p.adiciona_aresta('a8', 'M', 'T')
         self.g_p.adiciona_aresta('a9', 'T', 'Z')
 
+        # Grafo da Paraíba DFS (raiz T)
+        self.g_p_dfs_t = MeuGrafo()
+        self.g_p_dfs_t.adiciona_vertice("J")
+        self.g_p_dfs_t.adiciona_vertice("C")
+        self.g_p_dfs_t.adiciona_vertice("E")
+        self.g_p_dfs_t.adiciona_vertice("P")
+        self.g_p_dfs_t.adiciona_vertice("M")
+        self.g_p_dfs_t.adiciona_vertice("T")
+        self.g_p_dfs_t.adiciona_vertice("Z")
+        self.g_p_dfs_t.adiciona_aresta('a1', 'J', 'C')
+        self.g_p_dfs_t.adiciona_aresta('a2', 'C', 'E')
+        self.g_p_dfs_t.adiciona_aresta('a4', 'P', 'C')
+        self.g_p_dfs_t.adiciona_aresta('a6', 'T', 'C')
+        self.g_p_dfs_t.adiciona_aresta('a7', 'M', 'C')
+        self.g_p_dfs_t.adiciona_aresta('a9', 'T', 'Z')
+
+        self.g_p_dfs_j = MeuGrafo()
+        self.g_p_dfs_j.adiciona_vertice("J")
+        self.g_p_dfs_j.adiciona_vertice("C")
+        self.g_p_dfs_j.adiciona_vertice("E")
+        self.g_p_dfs_j.adiciona_vertice("P")
+        self.g_p_dfs_j.adiciona_vertice("M")
+        self.g_p_dfs_j.adiciona_vertice("T")
+        self.g_p_dfs_j.adiciona_vertice("Z")
+        self.g_p_dfs_j.adiciona_aresta('a1', 'J', 'C')
+        self.g_p_dfs_j.adiciona_aresta('a2', 'C', 'E')
+        self.g_p_dfs_j.adiciona_aresta('a4', 'P', 'C')
+        self.g_p_dfs_j.adiciona_aresta('a6', 'T', 'C')
+        self.g_p_dfs_j.adiciona_aresta('a8', 'M', 'T')
+        self.g_p_dfs_j.adiciona_aresta('a9', 'T', 'Z')
+
+        self.g_p_dfs_m = MeuGrafo()
+        self.g_p_dfs_m.adiciona_vertice("J")
+        self.g_p_dfs_m.adiciona_vertice("C")
+        self.g_p_dfs_m.adiciona_vertice("E")
+        self.g_p_dfs_m.adiciona_vertice("P")
+        self.g_p_dfs_m.adiciona_vertice("M")
+        self.g_p_dfs_m.adiciona_vertice("T")
+        self.g_p_dfs_m.adiciona_vertice("Z")
+        self.g_p_dfs_m.adiciona_aresta('a1', 'J', 'C')
+        self.g_p_dfs_m.adiciona_aresta('a2', 'C', 'E')
+        self.g_p_dfs_m.adiciona_aresta('a4', 'P', 'C')
+        self.g_p_dfs_m.adiciona_aresta('a6', 'T', 'C')
+        self.g_p_dfs_m.adiciona_aresta('a7', 'M', 'C')
+        self.g_p_dfs_m.adiciona_aresta('a9', 'T', 'Z')
+
+        # Grafo da Paraíba BFS (raiz T)
+        self.g_p_bfs_t = MeuGrafo()
+        self.g_p_bfs_t.adiciona_vertice("J")
+        self.g_p_bfs_t.adiciona_vertice("C")
+        self.g_p_bfs_t.adiciona_vertice("E")
+        self.g_p_bfs_t.adiciona_vertice("P")
+        self.g_p_bfs_t.adiciona_vertice("M")
+        self.g_p_bfs_t.adiciona_vertice("T")
+        self.g_p_bfs_t.adiciona_vertice("Z")
+        self.g_p_bfs_t.adiciona_aresta('a1', 'J', 'C')
+        self.g_p_bfs_t.adiciona_aresta('a2', 'C', 'E')
+        self.g_p_bfs_t.adiciona_aresta('a4', 'P', 'C')
+        self.g_p_bfs_t.adiciona_aresta('a6', 'T', 'C')
+        self.g_p_bfs_t.adiciona_aresta('a8', 'M', 'T')
+        self.g_p_bfs_t.adiciona_aresta('a9', 'T', 'Z')
+
+        self.g_p_bfs_j = MeuGrafo()
+        self.g_p_bfs_j.adiciona_vertice("J")
+        self.g_p_bfs_j.adiciona_vertice("C")
+        self.g_p_bfs_j.adiciona_vertice("E")
+        self.g_p_bfs_j.adiciona_vertice("P")
+        self.g_p_bfs_j.adiciona_vertice("M")
+        self.g_p_bfs_j.adiciona_vertice("T")
+        self.g_p_bfs_j.adiciona_vertice("Z")
+        self.g_p_bfs_j.adiciona_aresta('a1', 'J', 'C')
+        self.g_p_bfs_j.adiciona_aresta('a2', 'C', 'E')
+        self.g_p_bfs_j.adiciona_aresta('a4', 'P', 'C')
+        self.g_p_bfs_j.adiciona_aresta('a6', 'T', 'C')
+        self.g_p_bfs_j.adiciona_aresta('a7', 'M', 'C')
+        self.g_p_bfs_j.adiciona_aresta('a9', 'T', 'Z')
+
+        self.g_p_bfs_m = MeuGrafo()
+        self.g_p_bfs_m.adiciona_vertice("J")
+        self.g_p_bfs_m.adiciona_vertice("C")
+        self.g_p_bfs_m.adiciona_vertice("E")
+        self.g_p_bfs_m.adiciona_vertice("P")
+        self.g_p_bfs_m.adiciona_vertice("M")
+        self.g_p_bfs_m.adiciona_vertice("T")
+        self.g_p_bfs_m.adiciona_vertice("Z")
+        self.g_p_bfs_m.adiciona_aresta('a1', 'J', 'C')
+        self.g_p_bfs_m.adiciona_aresta('a2', 'C', 'E')
+        self.g_p_bfs_m.adiciona_aresta('a4', 'P', 'C')
+        self.g_p_bfs_m.adiciona_aresta('a7', 'M', 'C')
+        self.g_p_bfs_m.adiciona_aresta('a8', 'M', 'T')
+        self.g_p_bfs_m.adiciona_aresta('a9', 'T', 'Z')
+
         # Clone do Grafo da Paraíba para ver se o método equals está funcionando
         self.g_p2 = MeuGrafo()
         self.g_p2.adiciona_vertice("J")
@@ -115,6 +207,26 @@ class TestGrafo(unittest.TestCase):
         self.g_c.adiciona_aresta('a5', 'P', 'C')
         self.g_c.adiciona_aresta('a6', 'P', 'E')
 
+        # Grafo DFS Completo (raiz J)
+        self.g_c_dfs_j = MeuGrafo()
+        self.g_c_dfs_j.adiciona_vertice("C")
+        self.g_c_dfs_j.adiciona_vertice("J")
+        self.g_c_dfs_j.adiciona_vertice("E")
+        self.g_c_dfs_j.adiciona_vertice("P")
+        self.g_c_dfs_j.adiciona_aresta('a1', 'J', 'C')
+        self.g_c_dfs_j.adiciona_aresta('a4', 'E', 'C')
+        self.g_c_dfs_j.adiciona_aresta('a6', 'P', 'E')
+
+        # Grafo BFS Completo (raiz J)
+        self.g_c_bfs = MeuGrafo()
+        self.g_c_bfs.adiciona_vertice("C")
+        self.g_c_bfs.adiciona_vertice("J")
+        self.g_c_bfs.adiciona_vertice("E")
+        self.g_c_bfs.adiciona_vertice("P")
+        self.g_c_bfs.adiciona_aresta('a1', 'J', 'C')
+        self.g_c_bfs.adiciona_aresta('a3', 'J', 'P')
+        self.g_c_bfs.adiciona_aresta('a2', 'J', 'E')
+
         self.g_c2 = MeuGrafo()
         self.g_c2.adiciona_vertice("Nina")
         self.g_c2.adiciona_vertice("Maria")
@@ -122,6 +234,28 @@ class TestGrafo(unittest.TestCase):
 
         self.g_c3 = MeuGrafo()
         self.g_c3.adiciona_vertice("Único")
+
+        self.g_c_k3 = MeuGrafo()
+        self.g_c_k3.adiciona_vertice('A')
+        self.g_c_k3.adiciona_vertice('B')
+        self.g_c_k3.adiciona_vertice('C')
+        self.g_c_k3.adiciona_aresta('a1', 'A', 'B')
+        self.g_c_k3.adiciona_aresta('a2', 'A', 'C')
+        self.g_c_k3.adiciona_aresta('a3', 'B', 'C')
+
+        self.g_c_k3_dfs_a = MeuGrafo()
+        self.g_c_k3_dfs_a.adiciona_vertice('A')
+        self.g_c_k3_dfs_a.adiciona_vertice('B')
+        self.g_c_k3_dfs_a.adiciona_vertice('C')
+        self.g_c_k3_dfs_a.adiciona_aresta('a1', 'A', 'B')
+        self.g_c_k3_dfs_a.adiciona_aresta('a3', 'B', 'C')
+
+        self.g_c_k3_bfs_a = MeuGrafo()
+        self.g_c_k3_bfs_a.adiciona_vertice('A')
+        self.g_c_k3_bfs_a.adiciona_vertice('B')
+        self.g_c_k3_bfs_a.adiciona_vertice('C')
+        self.g_c_k3_bfs_a.adiciona_aresta('a1', 'A', 'B')
+        self.g_c_k3_bfs_a.adiciona_aresta('a2', 'A', 'C')
 
         # Grafos com laco
         self.g_l1 = MeuGrafo()
@@ -176,6 +310,8 @@ class TestGrafo(unittest.TestCase):
         self.g_d2.adiciona_vertice("C")
         self.g_d2.adiciona_vertice("D")
 
+        
+
     def test_adiciona_aresta(self):
         self.assertTrue(self.g_p.adiciona_aresta('a10', 'J', 'C'))
         a = Aresta("zxc", self.g_p.get_vertice("C"), self.g_p.get_vertice("Z"))
@@ -205,8 +341,10 @@ class TestGrafo(unittest.TestCase):
         self.assertEqual(self.g_p.vertices_nao_adjacentes(),
                          {'J-E', 'J-P', 'J-M', 'J-T', 'J-Z', 'C-Z', 'E-P', 'E-M', 'E-T', 'E-Z', 'P-M', 'P-T', 'P-Z',
                           'M-Z'})
-        self.assertEqual(self.g_d.vertices_nao_adjacentes(), {'A-C', 'A-D', 'B-C', 'B-D', 'C-D'})
-        self.assertEqual(self.g_d2.vertices_nao_adjacentes(), {'A-B', 'A-C', 'A-D', 'B-C', 'B-D', 'C-D'})
+        self.assertEqual(self.g_d.vertices_nao_adjacentes(),
+                         {'A-C', 'A-D', 'B-C', 'B-D', 'C-D'})
+        self.assertEqual(self.g_d2.vertices_nao_adjacentes(), {
+                         'A-B', 'A-C', 'A-D', 'B-C', 'B-D', 'C-D'})
         self.assertEqual(self.g_c.vertices_nao_adjacentes(), set())
         self.assertEqual(self.g_c3.vertices_nao_adjacentes(), set())
 
@@ -264,9 +402,11 @@ class TestGrafo(unittest.TestCase):
 
     def test_arestas_sobre_vertice(self):
         self.assertEqual(self.g_p.arestas_sobre_vertice('J'), {'a1'})
-        self.assertEqual(self.g_p.arestas_sobre_vertice('C'), {'a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7'})
+        self.assertEqual(self.g_p.arestas_sobre_vertice('C'), {
+                         'a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7'})
         self.assertEqual(self.g_p.arestas_sobre_vertice('M'), {'a7', 'a8'})
-        self.assertEqual(self.g_l2.arestas_sobre_vertice('B'), {'a1', 'a2', 'a3'})
+        self.assertEqual(self.g_l2.arestas_sobre_vertice('B'),
+                         {'a1', 'a2', 'a3'})
         self.assertEqual(self.g_d.arestas_sobre_vertice('C'), set())
         self.assertEqual(self.g_d.arestas_sobre_vertice('A'), {'asd'})
         with self.assertRaises(VerticeInvalidoError):
@@ -285,3 +425,93 @@ class TestGrafo(unittest.TestCase):
         self.assertFalse((self.g_l5.eh_completo()))
         self.assertFalse((self.g_d.eh_completo()))
         self.assertFalse((self.g_d2.eh_completo()))
+
+    def test_dfs(self):
+
+        # Completo K1
+        self.assertEqual(self.g_c3.dfs('Único'), self.g_c3)
+
+        # Completo K2
+        self.assertEqual(self.g_c2.dfs('Nina'), self.g_c2)
+
+        # Completo K3
+        self.assertEqual(self.g_c_k3.dfs('A'), self.g_c_k3_dfs_a)
+
+        # Completo K4
+        self.assertEqual(self.g_c.dfs('J'), self.g_c_dfs_j)
+
+        # Grafo dfs
+        self.assertEqual(self.g_c_dfs_j.dfs('J'), self.g_c_dfs_j)
+
+        # Grafo da Paraíba
+        self.assertEqual(self.g_p.dfs('T'), self.g_p_dfs_t)
+        self.assertEqual(self.g_p.dfs('J'), self.g_p_dfs_j)
+        self.assertEqual(self.g_p.dfs('M'), self.g_p_dfs_m)
+
+        # Vértices Inexistentes
+        with self.assertRaises(VerticeInvalidoError):
+            self.g_c.dfs('W')
+            self.g_c.dfs('')
+            self.g_p.dfs('JA')
+
+        # Grafos com laço e desconexos
+        with self.assertRaises(ValueError):
+            # Grafo com laço
+            self.assertEqual(self.g_l1.bfs('A'))
+            self.assertEqual(self.g_l1.bfs('B'))
+            self.assertEqual(self.g_l1.bfs('C'))
+            self.assertEqual(self.g_l1.bfs('D'))
+
+            # Grafo desconexo
+            self.assertEqual(self.g_d.bfs('A'), ValueError)
+            self.assertEqual(self.g_d.bfs('B'), ValueError)
+            self.assertEqual(self.g_d.bfs('C'), ValueError)
+            self.assertEqual(self.g_d.bfs('D'), ValueError)
+
+    def test_bfs(self):
+
+        # Completo K1
+        self.assertEqual(self.g_c3.bfs('Único'), self.g_c3)
+
+        # Completo K2
+        self.assertEqual(self.g_c2.bfs('Nina'), self.g_c2)
+
+        # Completo K3
+        self.assertEqual(self.g_c_k3.bfs('A'), self.g_c_k3_bfs_a)
+
+        # Completo K4
+        self.assertEqual(self.g_c.bfs('J'), self.g_c_bfs)
+
+        # Grafo bfs
+        self.assertEqual(self.g_c_bfs.bfs('J'), self.g_c_bfs)
+
+        # Grafo da Paraíba
+        self.assertEqual(self.g_p.bfs('T'), self.g_p_bfs_t)
+        self.assertEqual(self.g_p.bfs('J'), self.g_p_bfs_j)
+        self.assertEqual(self.g_p.bfs('M'), self.g_p_bfs_m)
+
+        # Vértices Inexistentes
+
+        with self.assertRaises(VerticeInvalidoError):
+            self.g_c.bfs('W')
+            self.g_c.bfs('')
+            self.g_p.bfs('JA')
+
+        # Grafos com laço e desconexos
+        with self.assertRaises(ValueError):
+            # Grafo com laço
+            self.assertEqual(self.g_l1.bfs('A'))
+            self.assertEqual(self.g_l1.bfs('B'))
+            self.assertEqual(self.g_l1.bfs('C'))
+            self.assertEqual(self.g_l1.bfs('D'))
+
+            # Grafo desconexo
+            self.assertEqual(self.g_d.bfs('A'), ValueError)
+            self.assertEqual(self.g_d.bfs('B'), ValueError)
+            self.assertEqual(self.g_d.bfs('C'), ValueError)
+            self.assertEqual(self.g_d.bfs('D'), ValueError)
+    
+    def test_ha_ciclo(self):
+        self.assertTrue(self.g_p.ha_ciclo())
+        self.assertTrue(self.g_p3.ha_ciclo())
+        self.assertTrue(self.g_l3.ha_ciclo())

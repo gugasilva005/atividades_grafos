@@ -41,6 +41,7 @@ class TestGrafo(unittest.TestCase):
         self.g_p2.adiciona_aresta('a7', 'M', 'C')
         self.g_p2.adiciona_aresta('a8', 'M', 'T')
         self.g_p2.adiciona_aresta('a9', 'T', 'Z')
+        
 
         # Outro clone do Grafo da Paraíba para ver se o método equals está funcionando
         # Esse tem um pequena diferença na primeira aresta
