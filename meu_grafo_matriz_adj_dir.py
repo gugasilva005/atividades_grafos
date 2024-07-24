@@ -56,4 +56,21 @@ class MeuGrafo(GrafoMatrizAdjacenciaDirecionado):
         Provê a matriz de alcançabilidade de Warshall do grafo
         :return: Uma lista de listas que representa a matriz de alcançabilidade de Warshall associada ao grafo
         '''
-        pass
+        E = []
+        for i in range(len(self.vertices)):
+            linha = []
+            for j in range(len(self.vertices)):
+                if len(self.arestas[i][j]) >= 1:
+                    linha.append(1)
+                else:
+                    linha.append(0)
+            E.append(linha)
+        
+        for i in range(len(self.vertices)):
+            for j in range(len(self.vertices)):
+                for k in range(len(self.vertices)):
+                    E[i][j] = E[i][j] or (E[i][k] and E[k][j])
+                
+                
+
+        return E

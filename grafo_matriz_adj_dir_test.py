@@ -203,6 +203,7 @@ class TestGrafo(unittest.TestCase):
         self.g_p_m[5][2] = 1
         self.g_p_m[5][6] = 1
 
+
         self.g_e_m = self.constroi_matriz(self.g_e)
         for i in range(0, len(self.g_e_m)):
             self.g_e_m[0][i] = 1
