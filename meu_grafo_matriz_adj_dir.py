@@ -36,7 +36,7 @@ class MeuGrafo(GrafoMatrizAdjacenciaDirecionado):
         '''
         pass
 
-    def arestas_sobre_vertice(self, V):
+    def arestas_sobre_vertice_dir(self, V):
         '''
         Provê uma lista que contém os rótulos das arestas que incidem sobre o vértice passado como parâmetro
         :param V: O vértice a ser analisado
@@ -87,42 +87,55 @@ class MeuGrafo(GrafoMatrizAdjacenciaDirecionado):
                 
         return E
     
-    def dijkstra(self, I, F):
-        beta = {}
-        phi = {}
-        pi = {}
-        w = I
-        for n in self.vertices:
-            v = str(n)
-            beta[v] = inf
-            phi[v] = 0
-            pi[v] = 0
-        beta[I] = 0
-        phi[I] = 1
-        w = I
-        while True:
-            sobre = self.arestas_sobre_vertice(w)
-            if w == F:
-                break
-            for x in sobre:
-                contrario = ""
-                if w == x.v1.rotulo:
-                    contrario = x.v2.rotulo
-                else:
-                    contrario = x.v1.rotulo
-                if beta[contrario] > beta[w] + x.peso and phi[contrario] == 0:
-                    beta[contrario] = beta[w] + x.peso
-                    pi[contrario] = w
-            menor = inf
-            for i in beta:
-                if beta[i] < menor and phi[i] == 0:
-                    menor = beta[i]
-            w = list(beta.keys())[list(beta.values()).index(menor)]
-            phi[w] = 1
-        r = F
-        caminho = []
-        while True:
-            caminho.append(r)
-            if r == I:
-                return caminho
-            r = pi[r]
+    def dijkstra(self, U, V):
+
+        if not self.existe_rotulo_vertice(U) or not self.existe_rotulo_vertice(V):
+            raise VerticeInvalidoError
+        
+        vertices = {}
+        
+        def get_pi(v):
+            return vertices[v]['pi']
+        def get_phi(v):
+            return vertices[v]['phi']
+        def get_beta(v):
+            return vertices[v]['beta']
+       
+        for vertice in self.vertices:
+            vertice_str = str(vertice)
+            if vertice_str == U:
+                vertices.update({vertice_str: {'beta': 0.0, 'phi': 1, 'pi': None}})
+            else:
+                vertices.update({vertice_str: {'beta': inf, 'phi': 0, 'pi': None}})
+
+        w = U
+        v_n_visitados: set[str] = {str(vert) for vert in self.vertices}
+
+        while w != V:
+            v_n_visitados.remove(w)
+
+            arestas: list[str] = sorted(self.arestas_sobre_vertice_dir(w))
+            for aresta in arestas:
+                obj_a = self.get_aresta(aresta)
+                v_adj = str(obj_a.v2)
+                if get_beta(v_adj) > get_beta(w) + obj_a.peso:
+                    vertices[v_adj]['beta'] = obj_a.peso + get_beta(w)
+                    vertices[v_adj]['pi'] = w
+            
+            menor: str | None = None
+            for vertice in v_n_visitados:
+                if not get_phi(vertice) and (menor is None or get_beta(vertice) < get_beta(menor)):
+                    menor = vertice
+            
+            if menor is not None:
+                w = menor 
+                vertices[w]['phi'] = 1
+            
+        atual = w
+        caminho: list[str] = list()
+        while atual != U:
+            caminho.append(atual)
+            atual = get_pi(atual)
+            
+        caminho.append(U)
+        return caminho[::-1]
