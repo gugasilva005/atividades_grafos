@@ -111,8 +111,10 @@ class MeuGrafo(GrafoMatrizAdjacenciaDirecionado):
         w = U
         v_n_visitados: set[str] = {str(vert) for vert in self.vertices}
 
-        while w != V:
-            v_n_visitados.remove(w)
+        while True:
+            if (w == V):
+                v_n_visitados.remove(w)
+                break
 
             arestas: list[str] = sorted(self.arestas_sobre_vertice_dir(w))
             for aresta in arestas:
@@ -122,7 +124,7 @@ class MeuGrafo(GrafoMatrizAdjacenciaDirecionado):
                     vertices[v_adj]['beta'] = obj_a.peso + get_beta(w)
                     vertices[v_adj]['pi'] = w
             
-            menor: str | None = None
+            menor = None
             for vertice in v_n_visitados:
                 if not get_phi(vertice) and (menor is None or get_beta(vertice) < get_beta(menor)):
                     menor = vertice

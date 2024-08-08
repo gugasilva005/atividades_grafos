@@ -139,6 +139,18 @@ class TestGrafo(unittest.TestCase):
         self.g_c3 = MeuGrafo()
         self.g_c3.adiciona_vertice("Único")
 
+        self.g_c_djk = MeuGrafo()
+        self.g_c_djk.adiciona_vertice("J")
+        self.g_c_djk.adiciona_vertice("C")
+        self.g_c_djk.adiciona_vertice("E")
+        self.g_c_djk.adiciona_vertice("P")
+        self.g_c_djk.adiciona_aresta('a1', 'J', 'C', 9)
+        self.g_c_djk.adiciona_aresta('a2', 'J', 'E', 1)
+        self.g_c_djk.adiciona_aresta('a3', 'J', 'P', 2)
+        self.g_c_djk.adiciona_aresta('a4', 'E', 'C', 9)
+        self.g_c_djk.adiciona_aresta('a5', 'P', 'C', 8)
+        self.g_c_djk.adiciona_aresta('a6', 'P', 'E', 1)
+
         # Grafos com laco
         self.g_l1 = MeuGrafo()
         self.g_l1.adiciona_vertice("A")
@@ -650,3 +662,4 @@ class TestGrafo(unittest.TestCase):
         with self.assertRaises(VerticeInvalidoError):
             self.assertEqual(self.grafo_drone.dijkstra('NN', 'A'), [])
             self.assertEqual(self.dijkstra_1.dijkstra('Y', 'D'), [])
+        self.assertEqual(self.g_c_djk.dijkstra('J', 'C'), ['J', 'C'])
