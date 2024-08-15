@@ -10,14 +10,41 @@ class MeuGrafo(GrafoMatrizAdjacenciaDirecionado):
         Onde X, Z e W são vértices no grafo que não tem uma aresta entre eles.
         :return: Uma lista com os pares de vértices não adjacentes
         '''
-        pass
+        n_adjacentes = set()
+        vertices = [str(vertice) for vertice in self.vertices]
+
+        for vertice in vertices:
+            v_adj = set()
+            for aresta_str in sorted(self.arestas_sobre_vertice_dir(vertice)):
+                aresta = self.get_aresta(aresta_str)
+                v1 = str(aresta.v1)
+                v2 = str(aresta.v2)
+
+                if v2 == vertice:
+                    continue
+                v_adj.add(v1 if v1 != vertice else v2)
+            
+            for vert in vertices:
+                if vert not in v_adj and vert != vertice:
+                    n_adjacentes.add(f'{vertice}-{vert}')
+        
+        return n_adjacentes
 
     def ha_laco(self):
         '''
         Verifica se existe algum laço no grafo.
         :return: Um valor booleano que indica se existe algum laço.
         '''
-        pass
+        vertices = [str(vertice) for vertice in self.vertices]
+        str_arestas = [
+            aresta for vertice in vertices for aresta in
+            self.arestas_sobre_vertice_dir(vertice)]
+
+        for str_aresta in str_arestas:
+            aresta = self.get_aresta(str_aresta)
+            if aresta.v1 == aresta.v2:
+                return True
+        return False
 
 
     def grau(self, V=''):
@@ -27,14 +54,32 @@ class MeuGrafo(GrafoMatrizAdjacenciaDirecionado):
         :return: Um valor inteiro que indica o grau do vértice
         :raises: VerticeInvalidoException se o vértice não existe no grafo
         '''
-        pass
+        if not self.existe_rotulo_vertice(V):
+            raise VerticeInvalidoError
+        
+        arestas = self.arestas_sobre_vertice_dir(V)
+        count = 0
+
+        for rotulo_aresta in arestas:
+            aresta = self.get_aresta(rotulo_aresta)
+            if str(aresta.v1) == V:
+                count += 1
+            if str(aresta.v2) == V:
+                count += 1
+        
+        return count
+
 
     def ha_paralelas(self):
         '''
         Verifica se há arestas paralelas no grafo
         :return: Um valor booleano que indica se existem arestas paralelas no grafo.
         '''
-        pass
+        for linha in self.arestas:
+            for obj in linha:
+                if len(obj) > 1:
+                    return True
+        return False
 
     def arestas_sobre_vertice_dir(self, V):
         '''
@@ -141,3 +186,57 @@ class MeuGrafo(GrafoMatrizAdjacenciaDirecionado):
             
         caminho.append(U)
         return caminho[::-1]
+    
+    def bellman_ford(self, U, V):
+        if not self.existe_rotulo_vertice(U) or not self.existe_rotulo_vertice(V):
+            raise VerticeInvalidoError
+
+        vertices = {}
+
+        def get_pi(v):
+            return vertices[v]['pi']
+        def get_phi(v):
+            return vertices[v]['phi']
+        def get_beta(v):
+            return vertices[v]['beta']
+        
+        for vertice in self.vertices:
+            vertice_str = str(vertice)
+            if vertice_str == U:
+                vertices.update({vertice_str: {'beta': 0.0, 'phi': 1, 'pi': None}})
+            else:
+                vertices.update({vertice_str: {'beta': inf, 'phi': 0, 'pi': None}})
+        
+        qtd_vertices = len(self.vertices)
+        v_alterados: set[str] = set()
+        v_alterados.add(U)
+
+        for x in range(qtd_vertices):
+            ultimos_vertices: set[str] = set()
+
+            for vertice in v_alterados:
+                arestas = sorted(list(self.arestas_sobre_vertice_dir(vertice)))
+
+                for aresta in arestas:
+                    obj_a = self.get_aresta(aresta)
+                    v_adj = str(obj_a.v2)
+
+                    new_beta = get_beta(vertice) + obj_a.peso
+                    if get_beta(v_adj) > new_beta:
+                        vertices[v_adj]['beta'] = new_beta
+                        vertices[v_adj]['pi'] = vertice
+                        ultimos_vertices.add(v_adj)
+            
+            if not ultimos_vertices:
+                atual = V
+                caminho = list()
+
+                while atual != U:
+                    caminho.append(atual)
+                    atual = get_pi(atual)
+                
+                caminho.append(U)
+                return caminho[::-1]
+            v_alterados = ultimos_vertices
+        
+        return False
